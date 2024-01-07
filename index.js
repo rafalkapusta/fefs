@@ -29,7 +29,12 @@ app.get('/', (req, res) => {
 
 });
 
-db.close();
+db.close((err, result) => {
+	if(err) {
+		console.error(err);
+	}
+	console.log('DB connection closed');
+});
 
 app.listen(port, () => {
     console.log(`Server started on  ${port}`);
